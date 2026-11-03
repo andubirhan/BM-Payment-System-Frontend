@@ -1,0 +1,95 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="title desc">
+  <title id="title">POS Tax and VAT dashboard concept</title>
+  <desc id="desc">A desktop dashboard concept with navigation, monthly sales and VAT summaries, pending payment alerts, recent transactions and a new transaction action.</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="#0f172a" flood-opacity=".055"/></filter>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eff6ff"/><stop offset="1" stop-color="#f0fdfa"/></linearGradient>
+  </defs>
+  <rect width="1440" height="1000" fill="#f6f8fb"/>
+  <!-- Sidebar -->
+  <rect width="250" height="1000" fill="#ffffff"/>
+  <line x1="249.5" y1="0" x2="249.5" y2="1000" stroke="#e7ebf1"/>
+  <rect x="24" y="23" width="42" height="42" rx="13" fill="#2563eb"/>
+  <path d="M35 45h7l4-10 5 20 4-10h6" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="78" y="42" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#14213d">POS Tax &amp; VAT</text>
+  <text x="78" y="59" font-family="Inter, Arial, sans-serif" font-size="11" fill="#718096">PAYMENTS CONSOLE</text>
+  <text x="25" y="112" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.3" fill="#98a2b3">WORKSPACE</text>
+  <!-- active nav -->
+  <rect x="13" y="127" width="224" height="46" rx="10" fill="#eff6ff"/>
+  <rect x="13" y="138" width="3" height="24" rx="1.5" fill="#2563eb"/>
+  <g stroke="#2563eb" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="29" y="140" width="8" height="8" rx="1.5"/><rect x="41" y="140" width="8" height="8" rx="1.5"/><rect x="29" y="152" width="8" height="8" rx="1.5"/><rect x="41" y="152" width="8" height="8" rx="1.5"/></g>
+  <text x="61" y="156" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="650" fill="#1d4ed8">Dashboard</text>
+  <!-- nav icons and labels -->
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#526176" stroke="#748196" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(29 194)" fill="none"><path d="M2 4h3l2 12h12l3-9H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></g><text x="61" y="210" stroke="none">Transactions</text>
+    <g transform="translate(29 239)" fill="none"><circle cx="10" cy="10" r="7"/><path d="m15 15 5 5M7 10h6"/></g><text x="61" y="256" stroke="none">Search records</text>
+    <g transform="translate(29 285)" fill="none"><rect x="1" y="4" width="20" height="14" rx="2.5"/><path d="M1 9h20M5 14h5"/></g><text x="61" y="302" stroke="none">Bank payments</text>
+    <g transform="translate(29 332)" fill="none"><path d="M2 20V11M9 20V4M16 20V8M1 20h18"/></g><text x="61" y="349" stroke="none">Reports</text>
+  </g>
+  <text x="25" y="405" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.3" fill="#98a2b3">PREFERENCES</text>
+  <g transform="translate(29 425)" stroke="#748196" stroke-width="1.7" fill="none" stroke-linecap="round"><circle cx="11" cy="11" r="3"/><path d="M11 1.5v2M11 18.5v2M1.5 11h2M18.5 11h2M4.3 4.3l1.4 1.4m10.6 10.6 1.4 1.4m0-13.4-1.4 1.4M5.7 16.3l-1.4 1.4"/><circle cx="11" cy="11" r="8.5"/></g>
+  <text x="61" y="448" font-family="Inter, Arial, sans-serif" font-size="13" fill="#526176">Settings</text>
+  <line x1="20" y1="914" x2="230" y2="914" stroke="#e7ebf1"/>
+  <circle cx="45" cy="950" r="18" fill="#dbeafe"/><text x="45" y="955" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">AU</text>
+  <text x="73" y="947" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="650" fill="#25324a">Admin User</text><text x="73" y="964" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8a94a6">Administrator</text>
+  <circle cx="216" cy="950" r="2" fill="#98a2b3"/><circle cx="222" cy="950" r="2" fill="#98a2b3"/><circle cx="228" cy="950" r="2" fill="#98a2b3"/>
+  <!-- Header -->
+  <rect x="250" width="1190" height="70" fill="#fff"/>
+  <line x1="250" y1="69.5" x2="1440" y2="69.5" stroke="#e7ebf1"/>
+  <text x="281" y="42" font-family="Inter, Arial, sans-serif" font-size="13" fill="#8190a5">Workspace  /  <tspan fill="#34445c" font-weight="600">Dashboard</tspan></text>
+  <rect x="1269" y="17" width="38" height="36" rx="10" fill="#fff" stroke="#e4e8ef"/><path d="M1282 43v-1.4c0-2.7-2-3.3-2-6.3a4 4 0 0 1 8 0c0 3 2 3.6 2 6.3V43zM1284 46h2" fill="none" stroke="#65748a" stroke-width="1.5" stroke-linecap="round"/><circle cx="1301" cy="20" r="4" fill="#ef4444" stroke="#fff" stroke-width="2"/>
+  <circle cx="1335" cy="35" r="17" fill="#dbeafe"/><text x="1335" y="39" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">AU</text><text x="1360" y="39" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#34445c">Admin</text>
+  <!-- Main area -->
+  <text x="282" y="119" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#16243a">Good morning, Admin</text>
+  <text x="282" y="145" font-family="Inter, Arial, sans-serif" font-size="13" fill="#77859a">Here’s your business overview for the selected period.</text>
+  <rect x="1198" y="95" width="128" height="42" rx="9" fill="#fff" stroke="#dce3ec"/><path d="M1215 109v12m-5-7h11m-12-5h13" stroke="#75839a" stroke-width="1.4" stroke-linecap="round"/><text x="1235" y="121" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#40516a">Oct 1–13, 2026</text><path d="m1309 113 4 4 4-4" fill="none" stroke="#75839a" stroke-width="1.4"/>
+  <rect x="1338" y="95" width="78" height="42" rx="9" fill="#2563eb"/><path d="M1355 115h13m-6.5-6.5v13" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><text x="1373" y="120" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="650" fill="#fff">New</text>
+  <!-- Summary cards -->
+  <g filter="url(#shadow)">
+    <rect x="282" y="169" width="267" height="143" rx="13" fill="#fff"/><rect x="566" y="169" width="267" height="143" rx="13" fill="#fff"/><rect x="850" y="169" width="267" height="143" rx="13" fill="#fff"/><rect x="1134" y="169" width="282" height="143" rx="13" fill="#fff"/>
+  </g>
+  <text x="303" y="201" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f7e92">Net sales</text><rect x="505" y="184" width="27" height="27" rx="8" fill="#eff6ff"/><path d="M513 199h11m-8-5h8m-8 10h5" stroke="#2563eb" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="303" y="245" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#17263d">UGX 84.25M</text><rect x="303" y="267" width="60" height="22" rx="11" fill="#ecfdf3"/><path d="m315 281 4-5 4 3 5-7" fill="none" stroke="#138a58" stroke-width="1.5"/><text x="333" y="282" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#138a58">+8.4%</text><text x="369" y="282" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8793a5">vs previous period</text>
+  <text x="587" y="201" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f7e92">VAT collected</text><rect x="789" y="184" width="27" height="27" rx="8" fill="#ecfdf5"/><path d="M803 190v14m-5-9h8m-8 5h8" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="587" y="245" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#17263d">UGX 12.85M</text><rect x="587" y="267" width="60" height="22" rx="11" fill="#ecfdf3"/><path d="m599 281 4-5 4 3 5-7" fill="none" stroke="#138a58" stroke-width="1.5"/><text x="617" y="282" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#138a58">+5.2%</text><text x="653" y="282" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8793a5">vs previous period</text>
+  <text x="871" y="201" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f7e92">Transactions</text><rect x="1073" y="184" width="27" height="27" rx="8" fill="#f5f3ff"/><path d="M1080 191h13v13h-13zM1083 188h7" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="871" y="245" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="700" fill="#17263d">1,248</text><rect x="871" y="267" width="60" height="22" rx="11" fill="#ecfdf3"/><path d="m883 281 4-5 4 3 5-7" fill="none" stroke="#138a58" stroke-width="1.5"/><text x="901" y="282" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#138a58">+12.1%</text><text x="937" y="282" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8793a5">vs previous period</text>
+  <text x="1155" y="201" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f7e92">Average transaction</text><rect x="1371" y="184" width="27" height="27" rx="8" fill="#fff7ed"/><path d="M1378 199h13m-6.5-7v14" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="1155" y="245" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#17263d">UGX 67,508</text><rect x="1155" y="267" width="58" height="22" rx="11" fill="#fff7ed"/><path d="m1167 275 4 5 4-3 5 6" fill="none" stroke="#d97706" stroke-width="1.5"/><text x="1185" y="282" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#b45309">−2.3%</text><text x="1220" y="282" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8793a5">vs previous period</text>
+  <!-- Attention banner -->
+  <rect x="282" y="333" width="1134" height="69" rx="12" fill="#fffbeb" stroke="#fde68a"/>
+  <circle cx="311" cy="367" r="15" fill="#fef3c7"/><path d="M311 358v10m0 5v.5" stroke="#b45309" stroke-width="2" stroke-linecap="round"/><text x="339" y="362" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#713f12">3 payments need attention</text><text x="339" y="382" font-family="Inter, Arial, sans-serif" font-size="11" fill="#8a5b20">Review pending transactions before retrying a payment.</text><text x="1295" y="373" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="650" fill="#9a5c08">Review payments</text><path d="m1393 364 5 5-5 5" fill="none" stroke="#9a5c08" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Main chart card -->
+  <g filter="url(#shadow)"><rect x="282" y="423" width="708" height="303" rx="13" fill="#fff"/><rect x="1007" y="423" width="409" height="303" rx="13" fill="#fff"/></g>
+  <text x="306" y="458" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b2940">Sales overview</text><text x="306" y="479" font-family="Inter, Arial, sans-serif" font-size="11" fill="#8491a4">Daily net sales and VAT · Oct 1–13, 2026</text>
+  <rect x="832" y="440" width="135" height="30" rx="7" fill="#fff" stroke="#e1e6ed"/><text x="849" y="459" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#4e5c72">Daily view</text><path d="m947 452 4 4 4-4" fill="none" stroke="#8290a3" stroke-width="1.3"/>
+  <!-- chart grid -->
+  <g stroke="#edf0f5" stroke-width="1"><line x1="350" y1="528" x2="962" y2="528"/><line x1="350" y1="572" x2="962" y2="572"/><line x1="350" y1="616" x2="962" y2="616"/><line x1="350" y1="660" x2="962" y2="660"/></g>
+  <g font-family="Inter, Arial, sans-serif" font-size="9" fill="#99a3b2" text-anchor="end"><text x="340" y="531">20M</text><text x="340" y="575">15M</text><text x="340" y="619">10M</text><text x="340" y="663">5M</text></g>
+  <path d="M365 625 C398 610 408 590 440 600 S484 624 516 583 S560 572 588 586 S629 565 660 566 S700 599 735 555 S778 540 808 556 S854 530 881 545 S925 520 950 526 L950 660 L365 660Z" fill="#dbeafe" opacity=".58"/>
+  <path d="M365 625 C398 610 408 590 440 600 S484 624 516 583 S560 572 588 586 S629 565 660 566 S700 599 735 555 S778 540 808 556 S854 530 881 545 S925 520 950 526" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <path d="M365 652 C398 647 410 637 440 642 S486 649 516 632 S560 628 588 636 S630 625 660 628 S702 646 735 621 S778 615 808 623 S854 607 881 618 S925 600 950 606" fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round"/>
+  <g font-family="Inter, Arial, sans-serif" font-size="9" fill="#99a3b2" text-anchor="middle"><text x="365" y="682">1 Oct</text><text x="462" y="682">3</text><text x="559" y="682">5</text><text x="656" y="682">7</text><text x="753" y="682">9</text><text x="850" y="682">11</text><text x="950" y="682">13</text></g>
+  <circle cx="306" cy="706" r="4" fill="#2563eb"/><text x="316" y="710" font-family="Inter, Arial, sans-serif" font-size="10" fill="#66758a">Net sales</text><circle cx="385" cy="706" r="4" fill="#14b8a6"/><text x="395" y="710" font-family="Inter, Arial, sans-serif" font-size="10" fill="#66758a">VAT collected</text>
+  <!-- Payment status card -->
+  <text x="1031" y="458" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b2940">Payment status</text><text x="1031" y="479" font-family="Inter, Arial, sans-serif" font-size="11" fill="#8491a4">Across this reporting period</text>
+  <circle cx="1208" cy="577" r="69" fill="none" stroke="#e8eef6" stroke-width="18"/><circle cx="1208" cy="577" r="69" fill="none" stroke="#22a06b" stroke-width="18" stroke-dasharray="350 434" transform="rotate(-90 1208 577)"/><circle cx="1208" cy="577" r="69" fill="none" stroke="#f5b942" stroke-width="18" stroke-dasharray="58 434" stroke-dashoffset="-350" transform="rotate(-90 1208 577)"/><circle cx="1208" cy="577" r="69" fill="none" stroke="#e56b6f" stroke-width="18" stroke-dasharray="26 434" stroke-dashoffset="-408" transform="rotate(-90 1208 577)"/>
+  <text x="1208" y="573" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#1b2940">1,248</text><text x="1208" y="594" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#8491a4">payments</text>
+  <circle cx="1039" cy="674" r="4.5" fill="#22a06b"/><text x="1052" y="678" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5d6c81">Settled</text><text x="1108" y="678" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#34445c">1,174</text>
+  <circle cx="1171" cy="674" r="4.5" fill="#f5b942"/><text x="1184" y="678" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5d6c81">Pending</text><text x="1240" y="678" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#34445c">52</text>
+  <circle cx="1291" cy="674" r="4.5" fill="#e56b6f"/><text x="1304" y="678" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5d6c81">Failed</text><text x="1348" y="678" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#34445c">22</text>
+  <!-- Transactions table -->
+  <g filter="url(#shadow)"><rect x="282" y="746" width="1134" height="226" rx="13" fill="#fff"/></g>
+  <text x="306" y="779" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b2940">Recent transactions</text><text x="306" y="800" font-family="Inter, Arial, sans-serif" font-size="11" fill="#8491a4">Latest activity from your POS</text>
+  <rect x="1209" y="761" width="181" height="34" rx="8" fill="#fff" stroke="#e1e6ed"/><circle cx="1227" cy="778" r="5" fill="none" stroke="#8491a4" stroke-width="1.4"/><path d="m1231 782 4 4" stroke="#8491a4" stroke-width="1.4" stroke-linecap="round"/><text x="1242" y="782" font-family="Inter, Arial, sans-serif" font-size="10" fill="#96a1b1">Search transactions</text>
+  <text x="1370" y="818" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="650" fill="#2563eb">View all transactions →</text>
+  <rect x="303" y="830" width="1092" height="29" rx="5" fill="#f8fafc"/><g font-family="Inter, Arial, sans-serif" font-size="9" font-weight="700" letter-spacing=".5" fill="#7e8a9c"><text x="319" y="849">REFERENCE</text><text x="502" y="849">CUSTOMER</text><text x="715" y="849">DATE &amp; TIME</text><text x="917" y="849">AMOUNT</text><text x="1082" y="849">STATUS</text><text x="1275" y="849">PAYMENT METHOD</text></g>
+  <g font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#45546a">
+    <text x="319" y="882" font-weight="650" fill="#25344b">TXN-2026-10482</text><text x="502" y="882">Grace Nakato</text><text x="715" y="882">Oct 13, 2026 · 10:42</text><text x="917" y="882" font-weight="650" fill="#25344b">UGX 245,000</text><rect x="1082" y="867" width="70" height="21" rx="10.5" fill="#ecfdf3"/><circle cx="1093" cy="877.5" r="3" fill="#16845d"/><text x="1101" y="881" font-size="9" font-weight="650" fill="#14714f">Settled</text><text x="1275" y="882">Mobile money</text>
+    <line x1="303" y1="895" x2="1395" y2="895" stroke="#eef1f5"/>
+    <text x="319" y="918" font-weight="650" fill="#25344b">TXN-2026-10481</text><text x="502" y="918">Kato Traders Ltd</text><text x="715" y="918">Oct 13, 2026 · 10:31</text><text x="917" y="918" font-weight="650" fill="#25344b">UGX 1,820,000</text><rect x="1082" y="903" width="74" height="21" rx="10.5" fill="#fffbeb"/><circle cx="1093" cy="913.5" r="3" fill="#ca8a04"/><text x="1101" y="917" font-size="9" font-weight="650" fill="#9a6700">Pending</text><text x="1275" y="918">Bank transfer</text>
+    <line x1="303" y1="931" x2="1395" y2="931" stroke="#eef1f5"/>
+    <text x="319" y="954" font-weight="650" fill="#25344b">TXN-2026-10480</text><text x="502" y="954">Walk-in customer</text><text x="715" y="954">Oct 13, 2026 · 10:17</text><text x="917" y="954" font-weight="650" fill="#25344b">UGX 58,500</text><rect x="1082" y="939" width="70" height="21" rx="10.5" fill="#ecfdf3"/><circle cx="1093" cy="949.5" r="3" fill="#16845d"/><text x="1101" y="953" font-size="9" font-weight="650" fill="#14714f">Settled</text><text x="1275" y="954">Cash</text>
+  </g>
+  <text x="282" y="991" font-family="Inter, Arial, sans-serif" font-size="9" fill="#96a1b1">Concept mockup · figures and UGX currency are illustrative; confirm reporting definitions and currency before implementation.</text>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "headers" : {
+    "Accept" : "application/json",
+    "Content-Type" : "application/json"
+  },
+  "befaPaymentId" : "BEFA-PAY-041",
+  "idempotencyKey" : "{{$randomUUID}}",
+  "cashRegisterId" : "reg-001",
+  "cashierId" : "cashier-001",
+  "customerTin" : "123456",
+  "customerName" : "andy test 1",
+  "lineItems" : [ {
+    "itemCode" : "electronics-000",
+    "itemName" : "computers",
+    "unitPrice" : 10000,
+    "quantity" : 200,
+    "discountAmount" : 0,
+    "vatExempt" : false,
+    "vatCategory" : "STANDARD"
+  } ],
+  "paymentTenders" : [ {
+    "paymentMethod" : "VOUCHER",
+    "paymentProvider" : "POS",
+    "amountTendered" : 2000000
+  } ]
+}

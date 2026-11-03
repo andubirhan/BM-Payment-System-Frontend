@@ -1,0 +1,16 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "transactionId": "{{$randomUUID}}",
+    "status": "COMPLETED",
+    "transactionType": "PURCHASE",
+    "netAmount": 60000000,
+    "createdAt": "2026-10-13T12:00:00",
+    "idempotencyKey": "sample-idempotency-key",
+    "customerName": "andy Customer1",
+    "customerTin": "2345678"
+  }
+}
