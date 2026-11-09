@@ -60,7 +60,7 @@ export default function TransactionDetail() {
         const requests = [searchAPI.children(transactionId)]
         if (record.parentTransactionId) requests.push(transactionAPI.getById(record.parentTransactionId))
         const backgroundRequests = [Promise.allSettled(requests)]
-        if (record.befaPaymentId && (!record.lineItems?.length || !record.paymentTenders?.length)) {
+        if (record.befaPaymentId && (!record.lineItems?.length || !record.paymentTenders?.length || !record.customerTin)) {
           backgroundRequests.push(
             bankPaymentAPI.getBefaPayment({
               befaPaymentId: record.befaPaymentId,
@@ -72,7 +72,7 @@ export default function TransactionDetail() {
               setTransaction((current) => current ? {
                 ...current,
                 customerName: current.customerName || befaData.customerName,
-                customerTin: current.customerTin || befaData.customerTin,
+                customerTin: current.customerTin || befaData.customerTin || befaData.tin,
                 grossAmount: current.grossAmount ?? befaData.grossAmount ?? befaData.amountInCents,
                 netAmount: current.netAmount ?? befaData.netAmount ?? befaData.amountInCents,
                 lineItems: current.lineItems?.length ? current.lineItems : befaData.lineItems,
@@ -128,7 +128,7 @@ export default function TransactionDetail() {
                 <div><dt className="text-xs font-medium text-gray-500">Status</dt><dd className="mt-1"><span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusClasses(transaction.status)}`}>{getStatusLabel(transaction.status)}</span></dd></div>
                 <Value label="Type" value={transaction.transactionType} />
                 <Value label="Customer" value={transaction.customerName || 'Guest'} />
-                <Value label="TIN (TAX Identification number)" value={transaction.customerTin} />
+                <Value label="TIN (TAX Identification number)" value={transaction.customerTin || transaction.tin} />
                 <Value label="Created" value={displayDate(transaction.createdAt)} />
                 <Value label="Gross amount" value={formatCurrency(transaction.grossAmount, transaction.currencyCode)} />
                 <Value label="Net amount" value={formatCurrency(transaction.netAmount, transaction.currencyCode)} />
@@ -146,6 +146,12 @@ export default function TransactionDetail() {
                 <Value label="Payment method" value={transaction.paymentMethod || transaction.paymentTenders?.map((tender) => tender.paymentMethod).filter(Boolean).join(', ')} />
                 <Value label="Cash register" value={transaction.cashRegisterId} />
                 <Value label="Cashier" value={transaction.cashierId} />
+                <Value label="Pre-authorization hold" value={transaction.preauthHoldAmount == null ? undefined : formatCurrency(transaction.preauthHoldAmount, transaction.currencyCode)} />
+                <Value label="Automatic capture at expiry" value={transaction.autoCaptureAmount == null ? undefined : formatCurrency(transaction.autoCaptureAmount, transaction.currencyCode)} />
+                <Value label="Pre-authorization expiry" value={displayDate(transaction.preauthExpiresAt)} />
+                <Value label="Authorization release reference" value={transaction.preauthReleaseReference} />
+                <Value label="Authorization release status" value={transaction.preauthReleaseStatus} />
+                <Value label="Manual capture occurred" value={transaction.manualCaptureOccurred == null ? undefined : transaction.manualCaptureOccurred ? 'Yes' : 'No'} />
                 <Value label="Fiscal reference" value={transaction.fiscalReference} />
                 <Value label="Fiscal signature" value={transaction.fiscalSignature} />
                 <Value label="Fiscal submission status" value={transaction.fiscalSubmissionStatus} />

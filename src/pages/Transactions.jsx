@@ -157,6 +157,7 @@ export default function Transactions() {
               <ResponseValue label="BEFA payment ID" value={transactionResponse.befaPaymentId} />
               <ResponseValue label="Bank transaction ID" value={transactionResponse.bankTransactionId} />
               <ResponseValue label="Parent transaction ID" value={transactionResponse.parentTransactionId} />
+              <ResponseValue label="TIN (TAX Identification number)" value={transactionResponse.customerTin || transactionResponse.tin} />
               <ResponseValue label="Gross amount" value={formatCurrency(transactionResponse.grossAmount, transactionResponse.currencyCode)} />
               <ResponseValue label="Net amount" value={formatCurrency(transactionResponse.netAmount, transactionResponse.currencyCode)} />
               <ResponseValue label="VAT" value={formatCurrency(transactionResponse.vatAmount, transactionResponse.currencyCode)} />
@@ -168,6 +169,7 @@ export default function Transactions() {
                 <ResponseValue label="Refundable amount" value={formatCurrency(transactionResponse.refundableAmount, transactionResponse.currencyCode)} />
               </>}
               <ResponseValue label="Pre-authorization hold" value={formatCurrency(transactionResponse.preauthHoldAmount, transactionResponse.currencyCode)} />
+              <ResponseValue label="Automatic capture at expiry" value={formatCurrency(transactionResponse.autoCaptureAmount, transactionResponse.currencyCode)} />
               <ResponseValue label="Captured at" value={transactionResponse.capturedAt} />
               <ResponseValue label="Pre-authorization expires" value={transactionResponse.preauthExpiresAt} />
               <ResponseValue label="Settled at" value={transactionResponse.settledAt} />

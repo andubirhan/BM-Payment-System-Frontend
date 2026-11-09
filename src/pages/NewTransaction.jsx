@@ -902,7 +902,15 @@ export default function NewTransaction({ actionsOnly = false }) {
                   <Info label="Cash register" value={payment.cashRegisterId} />
                   <Info label="Cashier" value={payment.cashierId} />
                   <Info label="Customer" value={payment.customerName || 'Guest'} />
-                  <Info label="TIN (TAX Identification number)" value={payment.customerTin || 'Not provided'} />
+                  <Info label="TIN (TAX Identification number)" value={payment.customerTin || payment.tin || 'Not provided'} />
+                  <Info label="Bank transaction ID" value={payment.bankTransactionId} />
+                  <Info label="Fiscal reference" value={payment.fiscalReference} />
+                  <Info label="Fiscal signature" value={payment.fiscalSignature} />
+                  <Info label="Fiscal submission status" value={payment.fiscalSubmissionStatus} />
+                  <Info label="Fiscal submission mode" value={payment.fiscalSubmissionMode} />
+                  <Info label="Authority response code" value={payment.fiscalAuthorityResponseCode} />
+                  <Info label="Authority response" value={payment.fiscalAuthorityResponseMessage} />
+                  <Info label="Fiscal submission time" value={payment.fiscalSubmittedToAuthorityAt ? formatDateTime(payment.fiscalSubmittedToAuthorityAt) : undefined} />
                 </dl>
               </section>
 
@@ -1058,6 +1066,19 @@ export default function NewTransaction({ actionsOnly = false }) {
               <div className="rounded-lg border border-gray-200 p-3"><dt className="text-xs text-gray-500">Status</dt><dd className="mt-1"><span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}><StatusIcon className="h-3.5 w-3.5" aria-hidden="true" />{status.label}</span></dd></div>
               <Info label="Amount" value={formatCurrency(result.netAmount, result.currencyCode)} />
               <Info label="Created" value={formatDateTime(result.createdAt)} />
+              {transactionType === 'PRE_AUTH' && <>
+                <Info label="TIN (TAX Identification number)" value={result.customerTin || result.tin || payment?.customerTin || payment?.tin || 'Not provided'} />
+                <Info label="Authorization hold" value={formatCurrency(result.preauthHoldAmount ?? amountDue, result.currencyCode || transactionCurrencyCode)} />
+                <Info label="Automatic capture at expiry" value={formatCurrency(result.autoCaptureAmount ?? autoCaptureAmount, result.currencyCode || transactionCurrencyCode)} />
+                <Info label="Bank transaction ID" value={result.bankTransactionId || payment?.bankTransactionId} />
+                <Info label="Fiscal reference" value={result.fiscalReference} />
+                <Info label="Fiscal signature" value={result.fiscalSignature} />
+                <Info label="Fiscal submission status" value={result.fiscalSubmissionStatus} />
+                <Info label="Fiscal submission mode" value={result.fiscalSubmissionMode} />
+                <Info label="Authority response code" value={result.fiscalAuthorityResponseCode} />
+                <Info label="Authority response" value={result.fiscalAuthorityResponseMessage} />
+                <Info label="Fiscal submission time" value={result.fiscalSubmittedToAuthorityAt ? formatDateTime(result.fiscalSubmittedToAuthorityAt) : undefined} />
+              </>}
             </dl>
             {isPendingStatus(result.status) && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">The transaction is pending confirmation. Check its status before retrying.</p>}
             {result.transactionId && <Link className="inline-flex text-sm font-semibold text-blue-700 hover:text-blue-900" to={`/transactions/${encodeURIComponent(result.transactionId)}`}>Open transaction details</Link>}
