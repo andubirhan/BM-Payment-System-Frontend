@@ -1,0 +1,22 @@
+{
+  "rewrites": [
+    { "source": "/login", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/transactions/new", "destination": "/index.html" },
+    { "source": "/transactions/:transactionId", "destination": "/index.html" },
+    { "source": "/transaction-actions", "destination": "/index.html" },
+    { "source": "/mock-transaction-files", "destination": "/index.html" },
+    { "source": "/payment-router", "destination": "/index.html" },
+    { "source": "/terminal/purchase", "destination": "/index.html" },
+    { "source": "/search", "destination": "/index.html" },
+    { "source": "/bank-payments", "destination": "/index.html" },
+    { "source": "/sales", "destination": "/index.html" },
+    { "source": "/reports", "destination": "/index.html" },
+    { "source": "/item-report", "destination": "/index.html" },
+    { "source": "/financial-report", "destination": "/index.html" },
+    { "source": "/fiscal-reports", "destination": "/index.html" },
+    { "source": "/fiscal-reports/:taxTransactionId", "destination": "/index.html" },
+    { "source": "/settings", "destination": "/index.html" }
+  ]
+}
