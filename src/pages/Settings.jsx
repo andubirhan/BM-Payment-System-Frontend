@@ -166,7 +166,7 @@ export default function Settings() {
       </Card>
 
       <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Percent className="h-5 w-5 text-blue-600" />VAT Configuration</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Percent className="h-5 w-5 text-[#9B2635]" />VAT Configuration</CardTitle></CardHeader>
         <CardContent className="space-y-6">
           {user?.role !== 'ADMIN' && <p className="text-sm text-gray-500">Only an administrator can change VAT rates or the service fee.</p>}
           <div>
@@ -180,7 +180,7 @@ export default function Settings() {
                 value={serviceFeeRate}
                 onChange={(e) => setServiceFeeRate(e.target.value)}
                 disabled={user?.role !== 'ADMIN' || pricingLoading || saving}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 focus:border-[#9B2635] focus:outline-none focus:ring-1 focus:ring-[#9B2635] disabled:bg-gray-100"
               />
               <span className="text-sm text-gray-500">%</span>
             </div>
@@ -204,7 +204,7 @@ export default function Settings() {
                         value={rate.categoryCode}
                         onChange={(e) => updateVatRate(index, 'categoryCode', e.target.value.toUpperCase())}
                         disabled={user?.role !== 'ADMIN' || pricingLoading || saving}
-                        className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+                        className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-[#9B2635] focus:outline-none focus:ring-1 focus:ring-[#9B2635] disabled:bg-gray-100"
                       />
                     </div>
                     <div>
@@ -214,7 +214,7 @@ export default function Settings() {
                         value={rate.categoryName}
                         onChange={(e) => updateVatRate(index, 'categoryName', e.target.value)}
                         disabled={user?.role !== 'ADMIN' || pricingLoading || saving}
-                        className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+                        className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-[#9B2635] focus:outline-none focus:ring-1 focus:ring-[#9B2635] disabled:bg-gray-100"
                       />
                     </div>
                     <div>
@@ -228,7 +228,7 @@ export default function Settings() {
                           value={(rate.rate * 100).toFixed(2)}
                           onChange={(e) => updateVatRate(index, 'rate', Number(e.target.value) / 100)}
                           disabled={user?.role !== 'ADMIN' || pricingLoading || saving}
-                          className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+                          className="w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm text-gray-900 focus:border-[#9B2635] focus:outline-none focus:ring-1 focus:ring-[#9B2635] disabled:bg-gray-100"
                         />
                         <span className="text-xs text-gray-500">%</span>
                       </div>
@@ -241,7 +241,7 @@ export default function Settings() {
                         checked={rate.active}
                         onChange={(e) => updateVatRate(index, 'active', e.target.checked)}
                         disabled={user?.role !== 'ADMIN' || pricingLoading || saving}
-                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        className="h-4 w-4 rounded border-gray-300 text-[#9B2635] focus:ring-[#9B2635]"
                       />
                       Active
                     </label>
@@ -296,7 +296,7 @@ export default function Settings() {
       </Card>
 
       <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Server className="h-5 w-5 text-blue-600" />Payment integration</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Server className="h-5 w-5 text-[#9B2635]" />Payment integration</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-3">
             <Setting label="Mode" value={paymentIntegrationConfig.mode === 'fixtures' ? 'Backend fixture simulator' : 'HTTP integration'} />
@@ -309,12 +309,12 @@ export default function Settings() {
       </Card>
 
       <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Database className="h-5 w-5 text-blue-600" />POS API</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Database className="h-5 w-5 text-[#9B2635]" />POS API</CardTitle></CardHeader>
         <CardContent><p className="text-sm text-gray-600">Transaction and reporting requests use the configured POS API client. API server settings are deployment-managed; database connection details are intentionally not exposed in this browser application.</p></CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5 text-blue-600" />Notifications</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5 text-[#9B2635]" />Notifications</CardTitle></CardHeader>
         <CardContent><p className="text-sm text-gray-600">Notification preferences will appear here once the backend supports saving and loading them.</p></CardContent>
       </Card>
     </div>
@@ -338,7 +338,7 @@ function RateInput({ label, value, onChange, disabled }) {
           value={value}
           onChange={(event) => onChange(event.target.value)}
           disabled={disabled}
-          className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+          className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-[#9B2635] focus:outline-none focus:ring-1 focus:ring-[#9B2635] disabled:bg-gray-100"
         />
         <span className="text-xs text-gray-500">%</span>
       </div>

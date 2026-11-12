@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Search as SearchIcon, Filter, X } from 'lucide-react'
+import { Search as SearchIcon, Filter, X, ChevronDown, ChevronUp } from 'lucide-react'
 import { searchAPI } from '@/lib/api'
 import { getApiErrorMessage } from '@/lib/apiError'
 import ErrorNotice from '@/components/ErrorNotice'
@@ -17,7 +17,8 @@ const clearButtonPositions = {
   date: 'right-9',
 }
 
-const filterKeys = ['customerName', 'befaPaymentId', 'bankTransactionId', 'customerTin', 'status', 'transactionType', 'cashRegisterId', 'cashierId', 'dateFrom', 'dateTo']
+const filterKeys = ['customerName', 'befaPaymentId', 'bankTransactionId', 'transactionId', 'customerTin', 'status', 'transactionType', 'cashRegisterId', 'cashierId', 'dateFrom', 'dateTo']
+const advancedFilterKeys = ['befaPaymentId', 'customerTin', 'status', 'transactionType', 'cashRegisterId', 'cashierId', 'dateFrom', 'dateTo']
 const emptyFilters = Object.fromEntries(filterKeys.map((key) => [key, '']))
 
 function filtersFromParams(params) {
@@ -50,6 +51,7 @@ export default function Search() {
   const appliedFilters = filtersFromParams(searchParams)
   const hasAppliedFilters = filterKeys.some((key) => appliedFilters[key])
   const [filters, setFilters] = useState(() => filtersFromParams(searchParams))
+  const [advancedSearchOpen, setAdvancedSearchOpen] = useState(() => advancedFilterKeys.some((key) => searchParams.get(key)))
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(true)
   const [requestError, setRequestError] = useState('')
@@ -72,6 +74,7 @@ export default function Search() {
     setLoading(true)
     setRequestError('')
     setFilters(applied)
+    if (advancedFilterKeys.some((key) => applied[key])) setAdvancedSearchOpen(true)
 
     const request = hasFilters
       ? searchAPI.transactions({ ...applied, page, size: 20 })
@@ -112,6 +115,7 @@ export default function Search() {
 
   const handleReset = () => {
     setFilters(emptyFilters)
+    setAdvancedSearchOpen(false)
     setRangeError('')
     setSearchParams({})
   }
@@ -139,7 +143,7 @@ export default function Search() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSearch} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div id="transaction-search-fields" className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               <div>
                 <label htmlFor="search-customer-name" className="block text-sm font-medium text-gray-700 mb-1">
                   Customer Name
@@ -158,7 +162,7 @@ export default function Search() {
                   />
                 </ClearableFilter>
               </div>
-              <div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-befa-payment-id" className="block text-sm font-medium text-gray-700 mb-1">
                   BEFA Payment ID
                 </label>
@@ -176,25 +180,7 @@ export default function Search() {
                   />
                 </ClearableFilter>
               </div>
-              <div>
-                <label htmlFor="search-bank-payment-id" className="block text-sm font-medium text-gray-700 mb-1">
-                  Bank Payment ID
-                </label>
-                <ClearableFilter
-                  value={filters.bankTransactionId}
-                  label="bank payment ID"
-                  onClear={() => updateFilter('bankTransactionId', '')}
-                >
-                  <Input
-                    id="search-bank-payment-id"
-                    placeholder="Enter bank payment ID"
-                    value={filters.bankTransactionId}
-                    onChange={(e) => updateFilter('bankTransactionId', e.target.value)}
-                    className="pr-10"
-                  />
-                </ClearableFilter>
-              </div>
-              <div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-customer-tin" className="block text-sm font-medium text-gray-700 mb-1">
                   Customer TIN
                 </label>
@@ -212,7 +198,45 @@ export default function Search() {
                   />
                 </ClearableFilter>
               </div>
-              <div>
+              <div className="grid min-w-0 grid-cols-1 gap-4 md:col-span-2 md:grid-cols-2">
+                <div className="min-w-0">
+                  <label htmlFor="search-bank-payment-id" className="block text-sm font-medium text-gray-700 mb-1">
+                    Bank Payment ID
+                  </label>
+                  <ClearableFilter
+                    value={filters.bankTransactionId}
+                    label="bank payment ID"
+                    onClear={() => updateFilter('bankTransactionId', '')}
+                  >
+                    <Input
+                      id="search-bank-payment-id"
+                      placeholder="Enter bank payment ID"
+                      value={filters.bankTransactionId}
+                      onChange={(e) => updateFilter('bankTransactionId', e.target.value)}
+                      className="min-w-0 pr-10"
+                    />
+                  </ClearableFilter>
+                </div>
+                <div className="min-w-0">
+                  <label htmlFor="search-transaction-id" className="block text-sm font-medium text-gray-700 mb-1">
+                    Transaction ID
+                  </label>
+                  <ClearableFilter
+                    value={filters.transactionId}
+                    label="transaction ID"
+                    onClear={() => updateFilter('transactionId', '')}
+                  >
+                    <Input
+                      id="search-transaction-id"
+                      placeholder="Enter transaction ID"
+                      value={filters.transactionId}
+                      onChange={(e) => updateFilter('transactionId', e.target.value)}
+                      className="min-w-0 pr-10"
+                    />
+                  </ClearableFilter>
+                </div>
+              </div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-status" className="block text-sm font-medium text-gray-700 mb-1">Status</label>
                 <ClearableFilter
                   value={filters.status}
@@ -237,7 +261,7 @@ export default function Search() {
                   </select>
                 </ClearableFilter>
               </div>
-              <div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-transaction-type" className="block text-sm font-medium text-gray-700 mb-1">
                   Transaction Type
                 </label>
@@ -261,7 +285,7 @@ export default function Search() {
                   </select>
                 </ClearableFilter>
               </div>
-              <div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-register" className="block text-sm font-medium text-gray-700 mb-1">
                   Cash Register ID
                 </label>
@@ -279,41 +303,7 @@ export default function Search() {
                   />
                 </ClearableFilter>
               </div>
-              <div>
-                <label htmlFor="search-date-from" className="block text-sm font-medium text-gray-700 mb-1">Date From</label>
-                <ClearableFilter
-                  value={filters.dateFrom}
-                  label="start date"
-                  onClear={() => updateFilter('dateFrom', '')}
-                  placement="date"
-                >
-                  <Input
-                    id="search-date-from"
-                    type="datetime-local"
-                    value={filters.dateFrom}
-                    onChange={(e) => updateFilter('dateFrom', e.target.value)}
-                    className="pr-16"
-                  />
-                </ClearableFilter>
-              </div>
-              <div>
-                <label htmlFor="search-date-to" className="block text-sm font-medium text-gray-700 mb-1">Date To</label>
-                <ClearableFilter
-                  value={filters.dateTo}
-                  label="end date"
-                  onClear={() => updateFilter('dateTo', '')}
-                  placement="date"
-                >
-                  <Input
-                    id="search-date-to"
-                    type="datetime-local"
-                    value={filters.dateTo}
-                    onChange={(e) => updateFilter('dateTo', e.target.value)}
-                    className="pr-16"
-                  />
-                </ClearableFilter>
-              </div>
-              <div>
+              <div className={advancedSearchOpen ? undefined : 'hidden'}>
                 <label htmlFor="search-cashier" className="block text-sm font-medium text-gray-700 mb-1">
                   Cashier ID
                 </label>
@@ -331,11 +321,57 @@ export default function Search() {
                   />
                 </ClearableFilter>
               </div>
+              <div className={`col-span-full grid min-w-0 grid-cols-2 gap-4 md:col-span-2 lg:col-span-2 ${advancedSearchOpen ? '' : 'hidden'}`}>
+                <div className="min-w-0">
+                  <label htmlFor="search-date-from" className="block text-sm font-medium text-gray-700 mb-1">Date From</label>
+                  <ClearableFilter
+                    value={filters.dateFrom}
+                    label="start date"
+                    onClear={() => updateFilter('dateFrom', '')}
+                    placement="date"
+                  >
+                    <Input
+                      id="search-date-from"
+                      type="datetime-local"
+                      value={filters.dateFrom}
+                      onChange={(e) => updateFilter('dateFrom', e.target.value)}
+                      className="w-full min-w-0 px-2 pr-8 text-xs sm:text-sm"
+                    />
+                  </ClearableFilter>
+                </div>
+                <div className="min-w-0">
+                  <label htmlFor="search-date-to" className="block text-sm font-medium text-gray-700 mb-1">Date To</label>
+                  <ClearableFilter
+                    value={filters.dateTo}
+                    label="end date"
+                    onClear={() => updateFilter('dateTo', '')}
+                    placement="date"
+                  >
+                    <Input
+                      id="search-date-to"
+                      type="datetime-local"
+                      value={filters.dateTo}
+                      onChange={(e) => updateFilter('dateTo', e.target.value)}
+                      className="w-full min-w-0 px-2 pr-8 text-xs sm:text-sm"
+                    />
+                  </ClearableFilter>
+                </div>
+              </div>
             </div>
 
             {rangeError && <p className="text-sm text-red-700" role="alert">{rangeError}</p>}
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                aria-expanded={advancedSearchOpen}
+                aria-controls="transaction-search-fields"
+                onClick={() => setAdvancedSearchOpen((open) => !open)}
+              >
+                {advancedSearchOpen ? <ChevronUp className="mr-2 h-4 w-4" /> : <ChevronDown className="mr-2 h-4 w-4" />}
+                {advancedSearchOpen ? 'Hide advanced filters' : 'Advanced search'}
+              </Button>
               <Button type="submit" className="flex-1">
                 <SearchIcon className="h-4 w-4 mr-2" />
                 Search
@@ -382,7 +418,7 @@ export default function Search() {
                   </TableRow>
                 ) : results.map((tx) => (
                   <TableRow key={tx.transactionId}>
-                    <TableCell className="font-medium"><Link className="text-blue-700 hover:text-blue-900" to={`/transactions/${encodeURIComponent(tx.transactionId)}`}>{tx.transactionId}</Link></TableCell>
+                    <TableCell className="font-medium"><Link className="text-[#9B2635] hover:text-[#7D1E2A]" to={`/transactions/${encodeURIComponent(tx.transactionId)}`}>{tx.transactionId}</Link></TableCell>
                     <TableCell>{tx.transactionType}</TableCell>
                     <TableCell>{tx.customerName || 'Guest'}</TableCell>
                     <TableCell>{formatCurrency(tx.netAmount, tx.currencyCode)}</TableCell>

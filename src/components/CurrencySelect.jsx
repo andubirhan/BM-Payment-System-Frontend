@@ -138,7 +138,7 @@ export default function CurrencySelect({ id, label = 'Transaction currency', val
                 'cursor-pointer px-3 py-2 text-sm',
                 dark
                   ? 'text-slate-100 hover:bg-slate-700'
-                  : 'text-gray-900 hover:bg-blue-50'
+                  : 'text-gray-900 hover:bg-[#F8ECEE]'
               )}
             >
               <span className="font-semibold">{code}</span>

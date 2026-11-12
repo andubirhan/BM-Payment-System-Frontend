@@ -105,7 +105,7 @@ export default function TransactionDetail() {
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       <div>
-        <Link to="/transactions" className="mb-3 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"><ArrowLeft className="h-4 w-4" /> Transactions</Link>
+        <Link to="/search" className="mb-3 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"><ArrowLeft className="h-4 w-4" /> Search</Link>
         <h1 className="text-3xl font-bold text-gray-900">{transaction?.transactionType ? `${transaction.transactionType.replaceAll('_', ' ')} transaction` : 'Transaction details'}</h1>
         <p className="mt-1 break-all text-gray-500">{transactionId}</p>
       </div>
@@ -118,7 +118,7 @@ export default function TransactionDetail() {
             </Link>
           </div>
           <Card>
-            <CardHeader><CardTitle className="flex items-center gap-2"><ReceiptText className="h-5 w-5 text-blue-600" />Summary</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><ReceiptText className="h-5 w-5 text-[#9B2635]" />Summary</CardTitle></CardHeader>
             <CardContent>
               <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <Value label="Transaction ID" value={transaction.transactionId || transactionId} />
@@ -173,17 +173,17 @@ export default function TransactionDetail() {
             <Card><CardHeader><CardTitle>Payment tenders</CardTitle></CardHeader><CardContent className="overflow-x-auto"><table className="w-full min-w-[760px] text-left text-sm"><thead className="text-gray-500"><tr><th className="pb-2">Method</th><th className="pb-2">Provider</th><th className="pb-2">Card</th><th className="pb-2">Status</th><th className="pb-2">Reference</th><th className="pb-2 text-right">Tendered</th><th className="pb-2 text-right">Applied</th></tr></thead><tbody>{transaction.paymentTenders.map((tender, index) => <tr key={`${tender.id || tender.paymentMethod || 'tender'}-${index}`} className="border-t border-gray-100"><td className="py-3">{tender.paymentMethod || '—'}</td><td className="py-3">{tender.paymentProvider || '—'}</td><td className="py-3">{[tender.cardBrand, tender.cardLastFour].filter(Boolean).join(' · ') || '—'}</td><td className="py-3">{tender.status || '—'}</td><td className="py-3">{tender.transactionReference || tender.rrn || tender.authCode || '—'}</td><td className="py-3 text-right">{formatCurrency(tender.amountTendered, transaction.currencyCode)}</td><td className="py-3 text-right">{formatCurrency(tender.amountApplied, transaction.currencyCode)}</td></tr>)}</tbody></table></CardContent></Card>
           )}
           {Array.isArray(transaction.auditLogs) && transaction.auditLogs.length > 0 && (
-            <Card><CardHeader><CardTitle>Status and audit history</CardTitle></CardHeader><CardContent><ol className="space-y-4">{[...transaction.auditLogs].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).map((entry, index) => <li key={`${entry.id || entry.action}-${index}`} className="border-l-2 border-blue-200 pl-4"><p className="text-sm font-semibold text-gray-900">{entry.action || 'Update'}{entry.toStatus ? ` · ${getStatusLabel(entry.toStatus)}` : ''}</p><p className="mt-1 text-xs text-gray-600">{entry.fromStatus ? `${getStatusLabel(entry.fromStatus)} → ` : ''}{entry.toStatus ? getStatusLabel(entry.toStatus) : ''}{entry.actorId ? ` · ${entry.actorId}` : ''}{entry.actorRole ? ` (${entry.actorRole})` : ''}</p>{(entry.reason || entry.payloadDetails) && <p className="mt-1 text-sm text-gray-600">{entry.reason || (typeof entry.payloadDetails === 'string' ? entry.payloadDetails : JSON.stringify(entry.payloadDetails))}</p>}<time className="mt-1 block text-xs text-gray-500">{displayDate(entry.createdAt)}</time></li>)}</ol></CardContent></Card>
+            <Card><CardHeader><CardTitle>Status and audit history</CardTitle></CardHeader><CardContent><ol className="space-y-4">{[...transaction.auditLogs].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).map((entry, index) => <li key={`${entry.id || entry.action}-${index}`} className="border-l-2 border-[#9B2635]/25 pl-4"><p className="text-sm font-semibold text-gray-900">{entry.action || 'Update'}{entry.toStatus ? ` · ${getStatusLabel(entry.toStatus)}` : ''}</p><p className="mt-1 text-xs text-gray-600">{entry.fromStatus ? `${getStatusLabel(entry.fromStatus)} → ` : ''}{entry.toStatus ? getStatusLabel(entry.toStatus) : ''}{entry.actorId ? ` · ${entry.actorId}` : ''}{entry.actorRole ? ` (${entry.actorRole})` : ''}</p>{(entry.reason || entry.payloadDetails) && <p className="mt-1 text-sm text-gray-600">{entry.reason || (typeof entry.payloadDetails === 'string' ? entry.payloadDetails : JSON.stringify(entry.payloadDetails))}</p>}<time className="mt-1 block text-xs text-gray-500">{displayDate(entry.createdAt)}</time></li>)}</ol></CardContent></Card>
           )}
           <Card>
             <CardHeader><CardTitle>Related transactions</CardTitle></CardHeader>
             <CardContent>
-              {relatedTransactions.length ? <div className="divide-y divide-gray-100">{relatedTransactions.map((record) => <Link key={record.transactionId} to={`/transactions/${encodeURIComponent(record.transactionId)}`} className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"><span><span className="block text-sm font-semibold text-blue-700">{record.transactionId}</span><span className="text-xs text-gray-500">{record.transactionType || 'Related transaction'} · {displayDate(record.createdAt)}{String(record.transactionType).toUpperCase() === 'REFUND' ? ` · ${formatCurrency(record.netAmount, record.currencyCode)}` : ''}</span></span><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusClasses(record.status)}`}>{getStatusLabel(record.status)}</span></Link>)}</div> : <p className="text-sm text-gray-500">No refunds, reversals, or related transactions are recorded.</p>}
+              {relatedTransactions.length ? <div className="divide-y divide-gray-100">{relatedTransactions.map((record) => <Link key={record.transactionId} to={`/transactions/${encodeURIComponent(record.transactionId)}`} className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"><span><span className="block text-sm font-semibold text-[#9B2635]">{record.transactionId}</span><span className="text-xs text-gray-500">{record.transactionType || 'Related transaction'} · {displayDate(record.createdAt)}{String(record.transactionType).toUpperCase() === 'REFUND' ? ` · ${formatCurrency(record.netAmount, record.currencyCode)}` : ''}</span></span><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${getStatusClasses(record.status)}`}>{getStatusLabel(record.status)}</span></Link>)}</div> : <p className="text-sm text-gray-500">No refunds, reversals, or related transactions are recorded.</p>}
             </CardContent>
           </Card>
         </>
       ) : !error ? <p className="py-12 text-center text-gray-500">No transaction data was returned.</p> : null}
-      <div><Link to="/transactions"><Button variant="outline">Back to transactions</Button></Link></div>
+      <div><Link to="/search"><Button variant="outline">Back to search</Button></Link></div>
     </div>
   )
 }

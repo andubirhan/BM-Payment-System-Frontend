@@ -188,10 +188,10 @@ export default function Transactions() {
               <ResponseValue label="Retryable" value={transactionResponse.retryable === undefined ? null : String(transactionResponse.retryable)} />
             </dl>}
             <details className="border-t border-gray-100 pt-4">
-              <summary className="cursor-pointer text-sm font-medium text-blue-700">View complete backend response</summary>
+              <summary className="cursor-pointer text-sm font-medium text-[#9B2635]">View complete backend response</summary>
               <pre className="mt-3 max-h-96 overflow-auto rounded-md bg-gray-50 p-4 text-xs text-gray-700">{JSON.stringify(transactionResponse, null, 2)}</pre>
             </details>
-            {transactionResponse.transactionId && <Link className="inline-flex text-sm font-semibold text-blue-700 hover:text-blue-900" to={`/transactions/${encodeURIComponent(transactionResponse.transactionId)}`}>Open transaction details</Link>}
+            {transactionResponse.transactionId && <Link className="inline-flex text-sm font-semibold text-[#9B2635] hover:text-[#7D1E2A]" to={`/transactions/${encodeURIComponent(transactionResponse.transactionId)}`}>Open transaction details</Link>}
           </CardContent>
         </Card>
       )}

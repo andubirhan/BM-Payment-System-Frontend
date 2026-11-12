@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
 import { CheckCircle2, LoaderCircle, Plus, RotateCcw, Save, Trash2 } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -67,7 +66,7 @@ function FormField({ id, label, value, onChange, type = 'text', step }) {
           type="checkbox"
           checked={Boolean(value)}
           onChange={(event) => onChange(event.target.checked)}
-          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          className="h-4 w-4 rounded border-gray-300 text-[#9B2635] focus:ring-[#9B2635]"
         />
         {label}
       </label>
@@ -120,7 +119,6 @@ function SectionHeading({ title, description, action }) {
 }
 
 export default function TestTransactionBuilder() {
-  const navigate = useNavigate()
   const [transactionType, setTransactionType] = useState('PURCHASE')
   const [template, setTemplate] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -220,14 +218,7 @@ export default function TestTransactionBuilder() {
     try {
       validateTemplateValues(template)
       const befaPaymentId = await saveMockTransactionTemplate(transactionType, template)
-      navigate('/transactions', {
-        state: {
-          paymentNotice: {
-            type: 'success',
-            message: `Saved your ${transactionType.toLowerCase()} test fixture upload with payment ID ${befaPaymentId}.`,
-          },
-        },
-      })
+      setNotice(`Saved your ${transactionType.toLowerCase()} test fixture upload with payment ID ${befaPaymentId}.`)
     } catch (saveError) {
       setError(saveError.message || 'Unable to save the transaction template.')
     } finally {
@@ -255,7 +246,7 @@ export default function TestTransactionBuilder() {
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       <header>
-        <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Fixture tools</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-[#9B2635]">Fixture tools</p>
         <h1 className="mt-1 text-3xl font-bold text-gray-900">Upload test transaction data</h1>
         <p className="mt-2 max-w-3xl text-gray-600">
           Edit and save your own purchase or sale JSON fixture for the backend fixture payment service.

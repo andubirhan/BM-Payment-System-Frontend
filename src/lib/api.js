@@ -575,9 +575,9 @@ export const searchAPI = {
   transactions: (params = {}) => isLocalPosDataMode()
     ? Promise.resolve(responseOf(pageOf(filterMockTransactions(params), params)))
     : pageResponse(api.get(API_ENDPOINTS.search.transactions, { params })),
-  fullText: (query, page = 0, size = 20) => isLocalPosDataMode()
-    ? Promise.resolve(responseOf(pageOf(filterMockTransactions({ query }), { page, size })))
-    : pageResponse(api.get(API_ENDPOINTS.search.fullText, { params: { query, page, size } })),
+  fullText: (query, page = 0, size = 20, filters = {}) => isLocalPosDataMode()
+    ? Promise.resolve(responseOf(pageOf(filterMockTransactions({ query, ...filters }), { page, size })))
+    : pageResponse(api.get(API_ENDPOINTS.search.fullText, { params: { query, page, size, ...filters } })),
   byCustomerName: (name, page = 0, size = 20) => isLocalPosDataMode()
     ? Promise.resolve(responseOf(pageOf(filterMockTransactions({ customerName: name }), { page, size })))
     : pageResponse(api.get(API_ENDPOINTS.search.customerName, { params: { name, page, size } })),

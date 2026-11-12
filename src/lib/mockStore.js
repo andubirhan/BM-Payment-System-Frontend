@@ -391,10 +391,27 @@ export function filterMockTransactions(filters = {}) {
 
   return readMockTransactions().filter((transaction) => {
     const created = new Date(transaction.createdAt).getTime()
-    const values = [transaction.transactionId, transaction.customerName, transaction.customerTin, transaction.cashRegisterId, transaction.cashierId]
+    const values = [
+      transaction.transactionId,
+      transaction.fiscalReference,
+      transaction.customerName,
+      transaction.customerTin,
+      transaction.befaPaymentId,
+      transaction.bankTransactionId,
+      transaction.businessTransactionType,
+      transaction.transactionType,
+      transaction.status,
+      transaction.netAmount,
+      transaction.cashRegisterId,
+      transaction.cashierId,
+    ]
     if (query && !values.some((value) => String(value || '').toLowerCase().includes(query))) return false
     if (filters.status && String(transaction.status).toUpperCase() !== String(filters.status).toUpperCase()) return false
+    if (filters.excludePending && String(transaction.status || '').toUpperCase() === 'PENDING') return false
     if (filters.transactionType && String(transaction.transactionType).toUpperCase() !== String(filters.transactionType).toUpperCase()) return false
+    if (filters.businessTransactionType
+        && String(transaction.businessTransactionType || transaction.transactionType).toUpperCase() !== String(filters.businessTransactionType).toUpperCase()) return false
+    if (filters.transactionId && !String(transaction.transactionId || '').toLowerCase().includes(String(filters.transactionId).toLowerCase())) return false
     if (filters.customerName && !String(transaction.customerName || '').toLowerCase().includes(String(filters.customerName).toLowerCase())) return false
     if (filters.befaPaymentId && !String(transaction.befaPaymentId || '').toLowerCase().includes(String(filters.befaPaymentId).toLowerCase())) return false
     if (filters.bankTransactionId && !String(transaction.bankTransactionId || '').toLowerCase().includes(String(filters.bankTransactionId).toLowerCase())) return false

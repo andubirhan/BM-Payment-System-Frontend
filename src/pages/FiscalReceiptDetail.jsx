@@ -122,7 +122,7 @@ export default function FiscalReceiptDetail() {
 
           <Card className="print:border-0 print:shadow-none">
             <CardHeader className="border-b border-gray-100">
-              <CardTitle className="flex items-center gap-2 text-xl"><ReceiptText className="h-5 w-5 text-blue-600" />Fiscal submission result</CardTitle>
+              <CardTitle className="flex items-center gap-2 text-xl"><ReceiptText className="h-5 w-5 text-[#9B2635]" />Fiscal submission result</CardTitle>
               <p className="text-sm text-gray-500">Submission status and authority response recorded by the backend.</p>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">

@@ -3,6 +3,8 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { Lock, User } from 'lucide-react'
 import ErrorNotice from '@/components/ErrorNotice'
+import CompanyFooter from '@/components/CompanyFooter'
+import CompanyLogo from '@/components/CompanyLogo'
 
 export default function Login() {
   const [username, setUsername] = useState('')
@@ -31,11 +33,13 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full">
+    <div className="flex min-h-screen flex-col items-center bg-[#F6F4F2] px-4">
+      <div className="my-auto w-full max-w-md py-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">POS VAT System</h1>
+            <CompanyLogo className="mb-3 justify-center" />
+            <h1 className="text-3xl font-bold tracking-tight text-[#302724]">POS VAT System</h1>
+            <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-[#9B2635]" />
             <p className="mt-2 text-sm text-gray-600">Sign in to your account</p>
           </div>
 
@@ -62,7 +66,7 @@ export default function Login() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                  className="block w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-[#9B2635] focus:ring-2 focus:ring-[#9B2635]"
                   placeholder="Enter your username"
                   autoComplete="username"
                   required
@@ -84,7 +88,7 @@ export default function Login() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                  className="block w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-[#9B2635] focus:ring-2 focus:ring-[#9B2635]"
                   placeholder="Enter your password"
                   autoComplete="current-password"
                   required
@@ -96,7 +100,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex w-full justify-center rounded-lg border border-transparent bg-[#9B2635] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#7D1E2A] focus:outline-none focus:ring-2 focus:ring-[#9B2635] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
@@ -114,10 +118,8 @@ export default function Login() {
           </div>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-500">
-          © 2024 POS VAT System. All rights reserved.
-        </p>
       </div>
+      <CompanyFooter className="w-full max-w-6xl border-t-0 bg-transparent px-2" />
     </div>
   )
 }

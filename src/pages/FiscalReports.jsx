@@ -265,10 +265,10 @@ export default function FiscalReports() {
                     {report.content.map((row) => (
                       <TableRow key={row.taxTransactionId}>
                         <TableCell className="whitespace-nowrap font-medium">
-                          <Link className="text-blue-700 hover:underline" to={`/fiscal-reports/${encodeURIComponent(row.taxTransactionId)}`}>{row.taxTransactionId}</Link>
+                          <Link className="text-[#9B2635] hover:text-[#7D1E2A] hover:underline" to={`/fiscal-reports/${encodeURIComponent(row.taxTransactionId)}`}>{row.taxTransactionId}</Link>
                         </TableCell>
                         <TableCell className="whitespace-nowrap">
-                          <Link className="text-blue-700 hover:underline" to={`/transactions/${encodeURIComponent(row.posTransactionId)}`}>{row.posTransactionId}</Link>
+                          <Link className="text-[#9B2635] hover:text-[#7D1E2A] hover:underline" to={`/transactions/${encodeURIComponent(row.posTransactionId)}`}>{row.posTransactionId}</Link>
                         </TableCell>
                         <TableCell className="whitespace-nowrap">{dateTime(row.createdAt)}</TableCell>
                         <TableCell className="space-y-1">

@@ -127,7 +127,7 @@ export default function PaymentChannelRouter() {
           <ArrowLeft className="h-5 w-5" />
         </button>
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Payment workflow</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-[#9B2635]">Payment workflow</p>
           <h1 className="mt-1 text-3xl font-bold text-gray-900">New transaction</h1>
           <p className="mt-2 max-w-2xl text-gray-600">
             Choose a transaction type, enter its BEFA identifiers, and load it directly into the matching payment channel.
@@ -138,7 +138,7 @@ export default function PaymentChannelRouter() {
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="rounded-xl bg-blue-50 p-3 text-blue-700">
+            <div className="rounded-xl bg-[#F8ECEE] p-3 text-[#9B2635]">
               <CreditCard className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
@@ -154,7 +154,7 @@ export default function PaymentChannelRouter() {
               const selected = transactionType === type
               const colorClass = type === 'SALE'
                 ? selected ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500/20' : 'border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/50'
-                : selected ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-500/20' : 'border-gray-200 hover:border-blue-300 hover:bg-blue-50/50'
+                : selected ? 'border-[#9B2635] bg-[#FBF3F4] ring-2 ring-[#9B2635]/15' : 'border-gray-200 hover:border-[#C77A82] hover:bg-[#FBF6F6]'
 
               return (
                 <button
@@ -164,7 +164,7 @@ export default function PaymentChannelRouter() {
                   aria-pressed={selected}
                   className={`flex min-h-28 items-start gap-4 rounded-xl border-2 p-4 text-left transition ${colorClass}`}
                 >
-                  <span className={`rounded-lg p-3 ${type === 'SALE' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'}`}>
+                  <span className={`rounded-lg p-3 ${type === 'SALE' ? 'bg-emerald-100 text-emerald-700' : 'bg-[#F8ECEE] text-[#9B2635]'}`}>
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <span className="flex-1">

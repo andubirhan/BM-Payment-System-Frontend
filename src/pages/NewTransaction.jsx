@@ -668,8 +668,8 @@ export default function NewTransaction({ actionsOnly = false }) {
       )}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <Link to="/transactions" className="mb-3 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900">
-            <ArrowLeft className="h-4 w-4" /> Transactions
+          <Link to="/search" className="mb-3 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900">
+            <ArrowLeft className="h-4 w-4" /> Search
           </Link>
           <h1 className="text-3xl font-bold text-gray-900">{actionsOnly ? 'Transaction actions' : 'New transaction'}</h1>
           <p className="mt-1 text-gray-500">{actionsOnly
@@ -798,7 +798,7 @@ export default function NewTransaction({ actionsOnly = false }) {
                       type="checkbox"
                       checked={pricesIncludeVat}
                       onChange={(event) => setPricesIncludeVat(event.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#9B2635] focus:ring-[#9B2635]"
                     />
                     <span>
                       <span className="font-medium">Entered prices already include VAT</span>
@@ -814,7 +814,7 @@ export default function NewTransaction({ actionsOnly = false }) {
                         type="checkbox"
                         checked={applyCustomerFee}
                         onChange={(event) => setApplyCustomerFee(event.target.checked)}
-                        className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#9B2635] focus:ring-[#9B2635]"
                       />
                       <span>
                         <span className="font-medium">Apply customer service fee ({(serviceFeeRate * 100).toFixed(2)}%)</span>
@@ -830,7 +830,7 @@ export default function NewTransaction({ actionsOnly = false }) {
                           checked={applyWithholdingVat}
                           onChange={(event) => setApplyWithholdingVat(event.target.checked)}
                           disabled={!withholdingVatRate}
-                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50"
+                          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#9B2635] focus:ring-[#9B2635] disabled:opacity-50"
                         />
                         <span>
                           <span className="font-medium">Apply withholding VAT ({(withholdingVatRate * 100).toFixed(2)}%)</span>
@@ -1081,7 +1081,7 @@ export default function NewTransaction({ actionsOnly = false }) {
               </>}
             </dl>
             {isPendingStatus(result.status) && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">The transaction is pending confirmation. Check its status before retrying.</p>}
-            {result.transactionId && <Link className="inline-flex text-sm font-semibold text-blue-700 hover:text-blue-900" to={`/transactions/${encodeURIComponent(result.transactionId)}`}>Open transaction details</Link>}
+            {result.transactionId && <Link className="inline-flex text-sm font-semibold text-[#9B2635] hover:text-[#7D1E2A]" to={`/transactions/${encodeURIComponent(result.transactionId)}`}>Open transaction details</Link>}
           </CardContent>
         </Card>
       )}
