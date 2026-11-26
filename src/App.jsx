@@ -24,6 +24,7 @@ const PaymentChannelRouter = lazy(() => import('@/pages/PaymentChannelRouter'))
 const TestTransactionBuilder = lazy(() => import('@/pages/TestTransactionBuilder'))
 const About = lazy(() => import('@/pages/About'))
 const Contact = lazy(() => import('@/pages/Contact'))
+const SystemHealth = lazy(() => import('@/pages/SystemHealth'))
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
                             <Route path="/fiscal-reports" element={<FiscalReports />} />
                             <Route path="/fiscal-reports/:taxTransactionId" element={<FiscalReceiptDetail />} />
                             <Route path="/settings" element={<Settings />} />
+                            <Route path="/system-health" element={<SystemHealth />} />
                             <Route path="*" element={<div className="mx-auto max-w-xl py-20 text-center"><h1 className="text-2xl font-bold text-gray-900">Page not found</h1><p className="mt-2 text-gray-600">The page you requested does not exist.</p><Link className="mt-5 inline-flex font-medium text-[#9B2635] hover:text-[#7D1E2A]" to="/">Return to dashboard</Link></div>} />
                           </Routes>
                         </Suspense>

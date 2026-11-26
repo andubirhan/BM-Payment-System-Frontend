@@ -57,6 +57,7 @@ export const API_ENDPOINTS = Object.freeze({
   }),
   settings: Object.freeze({ currency: '/settings/currency', pricing: '/settings/pricing' }),
   items: Object.freeze({ report: '/items/report' }),
+  admin: Object.freeze({ systemHealth: '/admin/system-health' }),
   bankPayments: Object.freeze({
     base: '/api/v1/pos/bank-payments',
     terminalScenarios: '/api/v1/pos/bank-payments/terminal-scenarios',
@@ -766,6 +767,10 @@ export const pricingAPI = {
 }
 
 // Bank/BEFA integration API
+export const adminAPI = {
+  getSystemHealth: () => integrationClient.get('/api/v1/admin/system-health'),
+}
+
 export const bankPaymentAPI = {
   getTerminalScenarios: async () => {
     const response = await integrationClient.get(API_ENDPOINTS.bankPayments.terminalScenarios)

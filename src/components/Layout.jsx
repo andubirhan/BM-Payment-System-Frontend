@@ -16,6 +16,7 @@ import {
   User as UserIcon,
   Building2,
   Mail,
+  Activity,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -37,6 +38,7 @@ const navItems = [
   { path: '/financial-report', label: 'Financial report', icon: FileSpreadsheet },
   { path: '/fiscal-reports', label: 'Fiscal reports', icon: FileCheck2 },
   { path: '/reports', label: 'Reports', icon: BarChart3 },
+  { path: '/system-health', label: 'System Health', icon: Activity },
   { path: '/mock-transaction-files', label: 'Upload test transaction data', icon: ClipboardList },
   { path: '/settings', label: 'Settings', icon: Settings },
   { path: '/about', label: 'About us', icon: Building2 },

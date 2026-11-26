@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CheckCircle2, LoaderCircle, Plus, RotateCcw, Save, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -119,6 +120,7 @@ function SectionHeading({ title, description, action }) {
 }
 
 export default function TestTransactionBuilder() {
+  const navigate = useNavigate()
   const [transactionType, setTransactionType] = useState('PURCHASE')
   const [template, setTemplate] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -217,8 +219,8 @@ export default function TestTransactionBuilder() {
     setNotice('')
     try {
       validateTemplateValues(template)
-      const befaPaymentId = await saveMockTransactionTemplate(transactionType, template)
-      setNotice(`Saved your ${transactionType.toLowerCase()} test fixture upload with payment ID ${befaPaymentId}.`)
+      await saveMockTransactionTemplate(transactionType, template)
+      navigate('/search', { replace: true })
     } catch (saveError) {
       setError(saveError.message || 'Unable to save the transaction template.')
     } finally {
