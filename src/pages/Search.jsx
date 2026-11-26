@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,9 +7,8 @@ import { Search as SearchIcon, Filter, X, ChevronDown, ChevronUp } from 'lucide-
 import { searchAPI } from '@/lib/api'
 import { getApiErrorMessage } from '@/lib/apiError'
 import ErrorNotice from '@/components/ErrorNotice'
-import PersistentNotification from '@/components/PersistentNotification'
 import { format } from 'date-fns'
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { formatCurrency, getStatusClasses, getStatusLabel } from '@/lib/format'
 
 const clearButtonPositions = {
@@ -46,8 +45,6 @@ function ClearableFilter({ value, label, onClear, placement = 'input', children 
 }
 
 export default function Search() {
-  const location = useLocation()
-  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const searchKey = searchParams.toString()
   const currentPage = Math.max(0, Number(searchParams.get('page')) || 0)
@@ -62,16 +59,7 @@ export default function Search() {
   const [totalPages, setTotalPages] = useState(0)
   const [totalElements, setTotalElements] = useState(0)
   const [refreshVersion, setRefreshVersion] = useState(0)
-  const [notification, setNotification] = useState(null)
   const requestId = useRef(0)
-  const dismissNotification = useCallback(() => setNotification(null), [])
-
-  useEffect(() => {
-    const notice = location.state?.paymentNotice
-    if (!notice) return
-    setNotification(notice)
-    navigate(`${location.pathname}${location.search}`, { replace: true, state: null })
-  }, [location, navigate])
 
   const updateFilter = (name, value) => {
     setFilters((currentFilters) => ({ ...currentFilters, [name]: value }))
@@ -141,14 +129,6 @@ export default function Search() {
 
   return (
     <div className="space-y-6">
-      {notification && (
-        <PersistentNotification
-          type={notification.type}
-          message={notification.message}
-          onClose={dismissNotification}
-          duration={3000}
-        />
-      )}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Search Transactions</h1>
         <p className="text-gray-500 mt-1">Find transactions using various filters</p>

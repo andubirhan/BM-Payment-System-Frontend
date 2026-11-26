@@ -213,14 +213,15 @@ export default function TestTransactionBuilder() {
     setNotice('')
   }
 
-  const saveTemplate = async () => {
+  const saveTemplate = async (event) => {
+    event.preventDefault()
     setSaving(true)
     setError('')
     setNotice('')
     try {
       validateTemplateValues(template)
       await saveMockTransactionTemplate(transactionType, template)
-      navigate('/search', { replace: true })
+      navigate('/', { replace: true })
     } catch (saveError) {
       setError(saveError.message || 'Unable to save the transaction template.')
     } finally {
@@ -291,7 +292,7 @@ export default function TestTransactionBuilder() {
           {loading ? 'Loading transaction fields…' : 'Transaction fields are unavailable.'}
         </div>
       ) : (
-        <>
+        <form className="space-y-6" onSubmit={saveTemplate}>
           <Card>
             <CardHeader>
               <CardTitle>{transactionType === 'SALE' ? 'Sale details' : 'Purchase details'}</CardTitle>
@@ -468,14 +469,14 @@ export default function TestTransactionBuilder() {
               <RotateCcw className="mr-2 h-4 w-4" />
               Reload fixture file
             </Button>
-            <Button type="button" onClick={saveTemplate} disabled={loading || saving || !template.befaPaymentId}>
+            <Button type="submit" disabled={loading || saving || !template.befaPaymentId}>
               {saving
                 ? <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
                 : <Save className="mr-2 h-4 w-4" />}
-              Save in this browser
+              Save
             </Button>
           </div>
-        </>
+        </form>
       )}
     </div>
   )

@@ -213,6 +213,7 @@ function executionRequestFrom(payment) {
 export default function NewTransaction({ actionsOnly = false }) {
   const location = useLocation()
   const navigate = useNavigate()
+  const returnTo = location.state?.from || '/search'
   const [transactionType, setTransactionType] = useState(actionsOnly
     ? ''
     : location.state?.transactionType === 'PRE_AUTH' ? 'PRE_AUTH' : 'PURCHASE')
@@ -413,11 +414,12 @@ export default function NewTransaction({ actionsOnly = false }) {
     }
   }, [amountDue, pricesIncludeVat, payment])
 
-  const returnToSearchWithNotice = (message) => {
-    navigate('/search', {
+  const returnWithNotice = (type, message, transactionResponse = null) => {
+    navigate(returnTo, {
       replace: true,
       state: {
-        paymentNotice: { type: 'success', message },
+        paymentNotice: { type, message },
+        transactionResponse,
       },
     })
   }
@@ -610,15 +612,16 @@ export default function NewTransaction({ actionsOnly = false }) {
         REVERSAL: ['REVERSED'],
       }
       if (successfulStatuses[transactionType]?.includes(resultStatus)) {
-        returnToSearchWithNotice(`${transactionTypeLabel(transactionType)} transaction completed successfully.`)
+        returnWithNotice('success', `${transactionTypeLabel(transactionType)} transaction completed successfully.`, transaction)
       } else if (['FAILED', 'FAILURE', 'UNSUCCESSFUL', 'UNSUCCESS', 'ERROR', 'DECLINED', 'REJECTED', 'CANCELLED', 'CANCELED'].includes(resultStatus)) {
-        setSubmitError(`Transaction failed${transaction?.message ? `: ${transaction.message}` : '.'}`)
+        returnWithNotice('error', `Transaction failed${transaction?.message ? `: ${transaction.message}` : '.'}`, transaction)
       }
       await loadPendingTransactions(pendingRange)
     } catch (error) {
       if (!error.status || error.status >= 500) setOutcomeUnknown(true)
       else {
-        setSubmitError(`Transaction action failed: ${getApiErrorMessage(error, 'Unable to process this transaction.')}`)
+        const errorResponse = error.response?.data?.body ?? error.response?.data ?? { message: getApiErrorMessage(error, 'Unable to process this transaction.') }
+        returnWithNotice('error', `Transaction action failed: ${getApiErrorMessage(error, 'Unable to process this transaction.')}`, errorResponse)
       }
     } finally {
       setSubmitting(false)
